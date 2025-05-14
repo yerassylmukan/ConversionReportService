@@ -1,4 +1,5 @@
 ﻿using ConversionReportService.Contracts.Dtos;
+using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,8 +27,8 @@ public class ReportController : ControllerBase
             {
                 Id = request.Id,
                 OrderId = request.OrderId,
-                StartDate = Google.Protobuf.WellKnownTypes.Timestamp.FromDateTime(request.StartDate),
-                EndDate = Google.Protobuf.WellKnownTypes.Timestamp.FromDateTime(request.EndDate)
+                StartDate = Timestamp.FromDateTime(request.StartDate),
+                EndDate = Timestamp.FromDateTime(request.EndDate)
             });
 
             var result = new GetReportResponseDto
@@ -75,7 +76,7 @@ public class ReportController : ControllerBase
             });
         }
     }
-    
+
     [HttpGet]
     public async Task<ActionResult<GetReportStatusResponseDto>> GetReportStatus([FromQuery] ReportRequestDto request)
     {
@@ -85,11 +86,11 @@ public class ReportController : ControllerBase
             {
                 Id = request.Id,
                 OrderId = request.OrderId,
-                StartDate = Google.Protobuf.WellKnownTypes.Timestamp.FromDateTime(request.StartDate),
-                EndDate = Google.Protobuf.WellKnownTypes.Timestamp.FromDateTime(request.EndDate)
+                StartDate = Timestamp.FromDateTime(request.StartDate),
+                EndDate = Timestamp.FromDateTime(request.EndDate)
             });
 
-            var result = new GetReportStatusResponseDto()
+            var result = new GetReportStatusResponseDto
             {
                 Id = response.Id,
                 StartDate = response.StartDate.ToDateTime().ToUniversalTime(),
@@ -119,7 +120,7 @@ public class ReportController : ControllerBase
             });
         }
     }
-    
+
     [HttpGet]
     public async Task<ActionResult<CreateReportResponse>> CreateReport([FromQuery] ReportRequestDto request)
     {
@@ -129,8 +130,8 @@ public class ReportController : ControllerBase
             {
                 Id = request.Id,
                 OrderId = request.OrderId,
-                StartDate = Google.Protobuf.WellKnownTypes.Timestamp.FromDateTime(request.StartDate),
-                EndDate = Google.Protobuf.WellKnownTypes.Timestamp.FromDateTime(request.EndDate)
+                StartDate = Timestamp.FromDateTime(request.StartDate),
+                EndDate = Timestamp.FromDateTime(request.EndDate)
             });
 
             var result = new CreateReportResponseDto

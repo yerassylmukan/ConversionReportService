@@ -1,4 +1,3 @@
-using ConversionReportService.Contracts.Enums;
 using Grpc.Core;
 
 namespace ConversionReportService.Request.Services;

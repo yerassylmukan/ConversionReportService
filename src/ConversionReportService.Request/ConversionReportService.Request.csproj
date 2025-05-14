@@ -7,21 +7,27 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Google.Protobuf" Version="3.30.2" />
+        <PackageReference Include="Google.Protobuf" Version="3.30.2"/>
         <PackageReference Include="Grpc.AspNetCore" Version="2.64.0"/>
         <PackageReference Include="Grpc.Tools" Version="2.72.0">
-          <PrivateAssets>all</PrivateAssets>
-          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.4"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.4">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4"/>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\ConversionReportService.Contracts\ConversionReportService.Contracts.csproj" />
-      <ProjectReference Include="..\ConversionReportService.Shared\ConversionReportService.Shared.csproj" />
+        <ProjectReference Include="..\ConversionReportService.Contracts\ConversionReportService.Contracts.csproj"/>
+        <ProjectReference Include="..\ConversionReportService.Shared\ConversionReportService.Shared.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-        <Protobuf Include="Protos\report.proto" GrpcServices="Server" />
+        <Protobuf Include="Protos\report.proto" GrpcServices="Server"/>
     </ItemGroup>
 
 </Project>
