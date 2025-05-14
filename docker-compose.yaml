@@ -1,0 +1,22 @@
+services:
+  messagebroker:
+    image: rabbitmq:management
+    container_name: messagebroker
+    hostname: report-mq
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+  
+  db:
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=report
+    restart: always
+    ports:
+      - "5432:5432"
