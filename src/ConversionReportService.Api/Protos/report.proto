@@ -1,0 +1,47 @@
+﻿syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "ConversionReportService.Api";
+
+package report;
+
+service ReportService {
+  rpc GetReport(ReportRequest) returns (GetReportResponse);
+  rpc GetReportStatus(ReportRequest) returns (GetReportStatusResponse);
+  rpc CreateReport(ReportRequest) returns (CreateReportResponse);
+}
+
+message ReportRequest {
+  int32 id = 1;
+  int32 orderId = 2;
+  google.protobuf.Timestamp startDate = 3;
+  google.protobuf.Timestamp endDate = 4;
+}
+
+message GetReportResponse {
+  int32 id = 1;
+  int32 productId = 2;
+  int32 orderId = 3;
+  google.protobuf.Timestamp startDate = 4;
+  google.protobuf.Timestamp endDate = 5;
+  google.protobuf.Timestamp requestedAt = 6;
+  google.protobuf.Timestamp generatedAt = 7;
+  string status = 8;
+  int32 viewsCount = 9;
+  int32 paymentsCount = 10;
+  double conversionRatio = 11;
+}
+
+message GetReportStatusResponse {
+  int32 id = 1;
+  google.protobuf.Timestamp startDate = 2;
+  google.protobuf.Timestamp endDate = 3;
+  google.protobuf.Timestamp requestedAt = 4;
+  string status = 5;
+}
+
+message CreateReportResponse {
+  int32 id = 1;
+  string status = 2;
+}

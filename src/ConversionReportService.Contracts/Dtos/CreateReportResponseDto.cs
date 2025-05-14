@@ -2,6 +2,6 @@
 
 public class CreateReportResponseDto
 {
-    public Guid RequestId { get; init; }
+    public int Id { get; init; }
     public string Status { get; init; }
 }
