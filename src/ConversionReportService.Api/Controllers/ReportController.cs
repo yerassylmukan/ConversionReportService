@@ -82,7 +82,7 @@ public class ReportController : ControllerBase
     {
         try
         {
-            var response = await _reportServiceClient.GetReportAsync(new ReportRequest
+            var response = await _reportServiceClient.GetReportStatusAsync(new ReportRequest
             {
                 Id = request.Id,
                 OrderId = request.OrderId,
@@ -141,15 +141,6 @@ public class ReportController : ControllerBase
             };
 
             return Ok(result);
-        }
-        catch (RpcException ex) when (ex.StatusCode == Grpc.Core.StatusCode.NotFound)
-        {
-            _logger.LogWarning("Report not found. RequestId: {RequestId}", request.Id);
-            return NotFound(new
-            {
-                Message = ex.Status.Detail,
-                RequestId = request.Id
-            });
         }
         catch (RpcException ex) when (ex.StatusCode == Grpc.Core.StatusCode.AlreadyExists)
         {

@@ -1,6 +1,9 @@
-﻿namespace ConversionReportService.Worker.Data;
+﻿using System;
+using System.Collections.Generic;
 
-public class ProductReport
+namespace ConversionReportService.Worker.Data;
+
+public partial class ProductReport
 {
     public int Id { get; set; }
 
